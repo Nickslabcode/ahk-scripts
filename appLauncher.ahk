@@ -1,6 +1,17 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force ; Skips dialog box and replaces old instance automatically. Similar to `Reload` command
 
+/**
+ * Groups windows based on `ahk_` criteria and switches to a specific group.
+ * 
+ * If attempting to switch to a window that's currently active,
+ * it cycles to the most recent active window from the same group. 
+ * 
+ * If attempting to switch to a window that's not active, it will attempt to run it.
+ * @param {String} groupName
+ * @param {'ahk_class' | 'ahk_exe' | 'ahk_pid' | 'ahk_id'} criteriaType 
+ * @param {String} criteriaValue
+ */
 switchToWindow(groupName, criteriaType, criteriaValue) {
   try {
     if (WinExist(criteriaType criteriaValue)) {
@@ -26,4 +37,4 @@ switchToWindow(groupName, criteriaType, criteriaValue) {
 +#w::switchToWindow('ObsidianGroup', 'ahk_exe', 'Obsidian.exe')
 +#t::switchToWindow('AnkiGroup', 'ahk_class', 'Qt691QWindowIcon')
 +#`::switchToWindow('TerminalGroup', 'ahk_class', 'CASCADIA_HOSTING_WINDOW_CLASS')
-+#q::switchToWindow('vscGroup', 'ahk_exe', 'Code.exe')
++#q::switchToWindow('VscGroup', 'ahk_exe', 'Code.exe')
