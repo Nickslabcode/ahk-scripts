@@ -1,4 +1,5 @@
 #Requires AutoHotkey v2.0
+#SingleInstance Force ; Skips dialog box and replaces old instance automatically. Similar to `Reload` command
 
 ; Global variables
 CurrentDesktop := 1
