@@ -1,7 +1,7 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force ; Skips dialog box and replaces old instance automatically. Similar to `Reload` command
 
-activateGroup(groupName, criteriaType, criteriaValue) {
+switchToWindow(groupName, criteriaType, criteriaValue) {
   try {
     if (WinExist(criteriaType criteriaValue)) {
       GroupAdd groupName, criteriaType criteriaValue
@@ -19,9 +19,11 @@ activateGroup(groupName, criteriaType, criteriaValue) {
   }
 }
 
-+#r::activateGroup('ChromeGroup', 'ahk_exe', 'chrome.exe')
-+#e::activateGroup('EdgeGroup', 'ahk_exe', 'msedge.exe')
-+#w::activateGroup('ObsidianGroup', 'ahk_exe', 'Obsidian.exe')
-+#t::activateGroup('AnkiGroup', 'ahk_class', 'Qt691QWindowIcon')
-+#`::activateGroup('TerminalGroup', 'ahk_class', 'CASCADIA_HOSTING_WINDOW_CLASS')
-+#q::activateGroup('vscGroup', 'ahk_exe', 'Code.exe')
+; === key mapping ===
+
++#r::switchToWindow('ChromeGroup', 'ahk_exe', 'chrome.exe')
++#e::switchToWindow('EdgeGroup', 'ahk_exe', 'msedge.exe')
++#w::switchToWindow('ObsidianGroup', 'ahk_exe', 'Obsidian.exe')
++#t::switchToWindow('AnkiGroup', 'ahk_class', 'Qt691QWindowIcon')
++#`::switchToWindow('TerminalGroup', 'ahk_class', 'CASCADIA_HOSTING_WINDOW_CLASS')
++#q::switchToWindow('vscGroup', 'ahk_exe', 'Code.exe')
