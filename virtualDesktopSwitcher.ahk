@@ -1,5 +1,5 @@
 #Requires AutoHotkey v2.0
-#SingleInstance Force
+#SingleInstance Force ; Skips dialog box and replaces old instance automatically. Similar to `Reload` command
 
 class VDesktop {
   static _CurrentDesktop := 1
