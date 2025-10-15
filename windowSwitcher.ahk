@@ -9,7 +9,7 @@
  * 
  * If attempting to switch to a window that's not active, it will attempt to run it.
  * @param {String} groupName
- * @param {'ahk_class' | 'ahk_exe' | 'ahk_pid' | 'ahk_id'} criteriaType 
+ * @param {'ahk_class' | 'ahk_exe' | 'ahk_pid' | 'ahk_id' | ''} criteriaType 
  * @param {String} criteriaValue
  */
 switchToWindow(groupName, criteriaType, criteriaValue) {
@@ -21,7 +21,7 @@ switchToWindow(groupName, criteriaType, criteriaValue) {
       else
         WinActivate criteriaType criteriaValue
     } else {
-      ToolTip 'Starting ' . criteriaValue
+      ToolTip 'Starting ' . groupName
       SetTimer () => ToolTip(), -2000 ; Remove tooltip after 2s
       Run criteriaValue
     }
@@ -32,9 +32,12 @@ switchToWindow(groupName, criteriaType, criteriaValue) {
 
 ; === key mapping ===
 
-+#r::switchToWindow('ChromeGroup', 'ahk_exe', 'chrome.exe') ; chrome
-+#e::switchToWindow('EdgeGroup', 'ahk_exe', 'msedge.exe') ; edge
-+#w::switchToWindow('ObsidianGroup', 'ahk_exe', 'Obsidian.exe') ; obsidian
-+#t::switchToWindow('AnkiGroup', 'ahk_class', 'Qt691QWindowIcon') ; anki
-+#`::switchToWindow('TerminalGroup', 'ahk_class', 'CASCADIA_HOSTING_WINDOW_CLASS') ; terminal
-+#q::switchToWindow('VscGroup', 'ahk_exe', 'Code.exe') ; vscode
++#r::switchToWindow('Chrome', 'ahk_exe', 'chrome.exe')
++#e::switchToWindow('Edge', 'ahk_exe', 'msedge.exe')
++#w::switchToWindow('Obsidian', 'ahk_exe', 'Obsidian.exe')
++#t::switchToWindow('Anki', 'ahk_class', 'Qt691QWindowIcon')
++#`::switchToWindow('Terminal', 'ahk_class', 'CASCADIA_HOSTING_WINDOW_CLASS')
++#q::switchToWindow('VSCode', 'ahk_exe', 'Code.exe')
++#a::switchToWindow('Clock', '', 'ms-clock:') ; ms-clock: - specific to UWP apps from MS Store
++#1::switchToWindow('WebStorm', 'ahk_class', 'SunAwtFrame')
++#d::switchToWindow('Teams', 'ahk_exe', 'ms-teams.exe')
