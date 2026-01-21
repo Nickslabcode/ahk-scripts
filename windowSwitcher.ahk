@@ -3,13 +3,13 @@
 
 /**
  * Groups windows based on `ahk_` criteria and switches to a specific group.
- * 
+ *
  * If attempting to switch to a window that's currently active,
- * it cycles to the most recent active window from the same group. 
- * 
+ * it cycles to the most recent active window from the same group.
+ *
  * If attempting to switch to a window that's not active, it will attempt to run it.
  * @param {String} groupName
- * @param {'ahk_class' | 'ahk_exe' | 'ahk_pid' | 'ahk_id' | ''} criteriaType 
+ * @param {'ahk_class' | 'ahk_exe' | 'ahk_pid' | 'ahk_id' | ''} criteriaType
  * @param {String} criteriaValue
  */
 switchToWindow(groupName, criteriaType, criteriaValue) {
@@ -41,3 +41,4 @@ switchToWindow(groupName, criteriaType, criteriaValue) {
 +#a::switchToWindow('Clock', '', 'ms-clock:') ; ms-clock: - specific to UWP apps from MS Store
 +#1::switchToWindow('WebStorm', 'ahk_class', 'SunAwtFrame')
 +#d::switchToWindow('Teams', 'ahk_exe', 'ms-teams.exe')
++#z::switchToWindow('Zed', 'ahk_exe', 'zed.exe')
