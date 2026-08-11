@@ -35,7 +35,7 @@ switchToWindow(groupName, criteriaType, criteriaValue) {
 +#r::switchToWindow('Chrome', 'ahk_exe', 'chrome.exe')
 +#e::switchToWindow('Edge', 'ahk_exe', 'msedge.exe')
 +#w::switchToWindow('Obsidian', 'ahk_exe', 'Obsidian.exe')
-+#t::switchToWindow('Anki', 'ahk_class', 'Qt691QWindowIcon')
++#t::switchToWindow('Outlook', 'ahk_class', 'Outlook Host')
 +#`::switchToWindow('Terminal', 'ahk_class', 'CASCADIA_HOSTING_WINDOW_CLASS')
 +#q::switchToWindow('VSCode', 'ahk_exe', 'Code.exe')
 +#a::switchToWindow('Clock', '', 'ms-clock:') ; ms-clock: - specific to UWP apps from MS Store
