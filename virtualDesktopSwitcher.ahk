@@ -1,50 +1,7 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force ; Skips dialog box and replaces old instance automatically. Similar to `Reload` command
 
-class VDesktop {
-  static _CurrentDesktop := 1
-  static _DesktopCount := 2
-
-  static Add() {
-    VDesktop._DesktopCount++
-    VDesktop._CurrentDesktop := VDesktop._DesktopCount
-    Send '^#d'
-  }
-
-  static Delete() {
-    if (VDesktop._DesktopCount > 1) {
-      VDesktop._DesktopCount--
-      VDesktop._CurrentDesktop := VDesktop._DesktopCount
-      Send '^#{F4}'
-    }
-  }
-
-  static SwitchToPrev() {
-    if (VDesktop._CurrentDesktop > 1) {
-      VDesktop._CurrentDesktop--
-      Send '^#{Left}'
-    }
-  }
-
-  static SwitchToNext() {
-    if (VDesktop._CurrentDesktop < VDesktop._DesktopCount) {
-      VDesktop._CurrentDesktop++
-      Send '^#{Right}'
-    }
-  }
-
-  static JumpTo(targetDesktop) {
-    if (targetDesktop < 1 || targetDesktop > VDesktop._DesktopCount)
-      return
-
-    while (targetDesktop != VDesktop._CurrentDesktop) {
-      if (targetDesktop > VDesktop._CurrentDesktop)
-        VDesktop.SwitchToNext()
-      else
-        VDesktop.SwitchToPrev()
-    }
-  }
-}
+#Include virtualDesktopSwitcher/VDesktop.ahk
 
 ; === key mapping ===
 
