@@ -27,6 +27,36 @@ mapKey('+#r', 'Chrome')
 
 To add a new shortcut, add an entry to `Programs` and a corresponding `mapKey(...)` call.
 
+#### Hotkey modifier symbols
+
+Prefix one or more of these to a key name to build a shortcut string, e.g. `'+#r'` = Shift+Win+R:
+
+| Symbol | Modifier | Example -> Meaning |
+| --- | --- | --- |
+| `#` | Win | `#r` -> Win+R |
+| `!` | Alt | `!r` -> Alt+R |
+| `^` | Ctrl | `^r` -> Ctrl+R |
+| `+` | Shift | `+r` -> Shift+R |
+| `&` | Combine two keys into a custom hotkey | `a & b` -> A and B held together |
+| `<` | Use the left key of a modifier pair | `<^r` -> Left Ctrl+R |
+| `>` | Use the right key of a modifier pair | `>^r` -> Right Ctrl+R |
+| `*` | Wildcard: fire even if extra modifiers are held | `*r` -> R (with any combination of modifiers) |
+| `~` | Passthrough: don't block the key's native function | `~r` -> R (native action still happens) |
+| `$` | Force the keyboard hook (avoids `Send` re-triggering) | `$r` -> R |
+
+Modifiers can be combined, e.g. `+#r` (used throughout `windowSwitcher.ahk`).
+
+#### Finding a program's `ahk_class` / `ahk_exe` with Window Spy
+
+`Window Spy` is a tool bundled with AutoHotkey that shows the class name, exe name, and other details of whatever window is under your mouse. Use it to find the `criteriaType`/`criteriaValue` for a new `Programs` entry:
+
+1. Make sure AutoHotkey is installed, then run any `.ahk` script (e.g. double-click `windowSwitcher.ahk`) so an AutoHotkey icon (green "H") appears in the system tray, near the clock.
+2. Right-click the tray icon and choose **Window Spy** from the menu.
+3. Click on, or just hover your mouse over, the window of the program you want to map. Window Spy updates live as you move the mouse.
+4. In the Window Spy window, note the **"ahk_class"** value (for `criteriaType: 'ahk_class'`) or the **"ahk_exe"** value (for `criteriaType: 'ahk_exe'`) — either works, pick whichever value looks more stable/unique for that app.
+5. Add a new entry to the `Programs` map in `windowSwitcher.ahk` using the value you copied, then add a `mapKey('<shortcut>', '<name>')` call for it.
+6. Right-click the AutoHotkey tray icon and choose **Reload** to apply your changes.
+
 ### `virtualDesktopSwitcher.ahk`
 
 Adds hotkeys for navigating Windows virtual desktops (create, delete, switch to previous/next, jump to a specific desktop number). See the `; === key mapping ===` section in the file for the exact bindings.
