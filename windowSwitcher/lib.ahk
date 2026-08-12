@@ -23,7 +23,7 @@ switchToWindow(groupName, criteriaType, criteriaValue) {
       Run criteriaValue
     }
   } catch {
-    MsgBox('Could not start ' . criteriaValue . '. Please start the application manually first!')
+    MsgBox('Could not start ' . groupName . '. Please start the application manually first!')
   }
 }
 
